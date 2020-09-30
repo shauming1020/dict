@@ -104,6 +104,24 @@ int main(int argc, char **argv)
         return stat;
     }
 
+    else if (argc == 4 && strcmp(argv[1], "--bloom") == 0) {
+        strcpy(word, argv[3]);
+        rmcrlf(word);
+
+        int stat = bench_search_bloom(root, BENCH_TEST_FILE, bloom, word);
+        tst_free(root);
+        free(pool);
+        return stat;
+    } else {
+        strcpy(word, argv[3]);
+        rmcrlf(word);
+
+        int stat = bench_search_wo_bloom(root, BENCH_TEST_FILE, bloom, word);
+        tst_free(root);
+        free(pool);
+        return stat;
+    }
+
     FILE *output;
     output = fopen("ref.txt", "a");
     if (output != NULL) {
