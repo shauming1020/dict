@@ -108,11 +108,11 @@ int main(int argc, char **argv)
         strcpy(word, argv[3]);
         rmcrlf(word);
 
-        int stat = bench_search_bloom(root, BENCH_TEST_FILE, bloom, word);
+        int stat = bench_search_bloom(root, bloom, word);
         tst_free(root);
         free(pool);
         return stat;
-    } else {
+    } else if (argc == 4 && strcmp(argv[1], "--bloom-wo") == 0) {
         strcpy(word, argv[3]);
         rmcrlf(word);
 
