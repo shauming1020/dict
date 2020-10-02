@@ -108,7 +108,7 @@ int main(int argc, char **argv)
         strcpy(word, argv[3]);
         rmcrlf(word);
 
-        int stat = bench_search_bloom(root, bloom, word);
+        int stat = prefix_search_bloom(root, bloom, word, argv[2]);
         tst_free(root);
         free(pool);
         return stat;
@@ -116,7 +116,7 @@ int main(int argc, char **argv)
         strcpy(word, argv[3]);
         rmcrlf(word);
 
-        int stat = bench_search_wo_bloom(root, BENCH_TEST_FILE, bloom, word);
+        int stat = prefix_search_wo_bloom(root, bloom, word, argv[2]);
         tst_free(root);
         free(pool);
         return stat;
