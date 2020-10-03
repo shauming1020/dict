@@ -8,8 +8,8 @@
 #include "bloom.h"
 #include "tst.h"
 
-#define TableSize 5000000 /* size of bloom filter */
-#define HashNumber 2      /* number of hash functions */
+#define TableSize 50000000 /* size of bloom filter */
+#define HashNumber 5000000 /* number of hash functions */
 
 /** constants insert, delete, max word(s) & stack nodes */
 enum { INS, DEL, WRDMAX = 256, STKMAX = 512, LMAX = 1024 };
@@ -108,7 +108,7 @@ int main(int argc, char **argv)
         strcpy(word, argv[3]);
         rmcrlf(word);
 
-        int stat = prefix_search_bloom(root, bloom, word, argv[2]);
+        int stat = search_bloom(root, bloom, word, argv[2]);
         tst_free(root);
         free(pool);
         return stat;
@@ -116,7 +116,7 @@ int main(int argc, char **argv)
         strcpy(word, argv[3]);
         rmcrlf(word);
 
-        int stat = prefix_search_wo_bloom(root, bloom, word, argv[2]);
+        int stat = search_wo_bloom(root, bloom, word, argv[2]);
         tst_free(root);
         free(pool);
         return stat;

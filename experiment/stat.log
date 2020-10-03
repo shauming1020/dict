@@ -1,0 +1,1839 @@
+mkdir -p experiment;
+COPY mechanism
+./test_common --bloom CPY "";		
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094867 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55f415c64ad0
+./test_common --bloom-wo CPY "";
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.090837 sec
+REFERENCE mechanism
+./test_common --bloom REF "";
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093551 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7fab72ea9535
+./test_common --bloom-wo REF "";
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093170 sec
+echo 3 | sudo tee /proc/sys/vm/drop_caches;
+3
+sudo perf stat --repeat 100 \
+	-e cache-misses,cache-references,instructions,cycles \
+	./test_common --bloom CPY ""
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.105157 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x5607e1e4c790
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094429 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x5628f3d0a790
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094394 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x5629536e9790
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.096193 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x5563852e1790
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094253 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55613230f790
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094333 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55a505def790
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094237 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55c228782790
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.095203 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x559abc9b9790
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094466 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x5584928ecf50
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093487 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55824a6d0f50
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.092847 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x5611adbe8f50
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094707 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55669ee8cf50
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093938 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55f6ee6d7f50
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093468 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x56130a8b0f50
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093578 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x555d7b47bf50
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094532 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x56348ff37f50
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.095406 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x561b99d90bf0
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094315 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x564441cb2bf0
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093512 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x561b87df8bf0
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093684 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x5576c12babf0
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093858 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55b3f4d9cbf0
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093446 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x558ed15cabf0
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093442 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x5558c15e1bf0
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093576 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x556e76bd5bf0
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093960 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55fe2f22a190
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093504 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x5557817b2190
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.092960 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55b7e9a82190
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094878 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55b647d3d190
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.097016 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x5638f8007190
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.095524 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x564868fbe190
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.096436 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55ccecbe4190
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.096148 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55d1c583d190
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.096075 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+(nil)
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.092114 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+(nil)
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.092985 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+(nil)
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.092034 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+(nil)
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094489 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+(nil)
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093782 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+(nil)
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094583 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+(nil)
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094694 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+(nil)
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094432 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x5634cb48fdc0
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094221 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x562fffd94dc0
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093308 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x561232bb7dc0
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094047 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x555db2e07dc0
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.096219 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55cc067a4dc0
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094457 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55734e957dc0
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093266 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x558c034d6dc0
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093378 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x5641361dcdc0
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093968 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55b0f5005590
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094134 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x556fc9042590
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093817 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55aec2c88590
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093968 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x564d140aa590
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093513 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x562e8ba44590
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093603 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x563e72640590
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.095111 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55a8e849a590
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094373 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x56232746c590
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.092652 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55e477616bd0
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.095293 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x564fc4f60bd0
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094007 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55602925ebd0
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.097862 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55df83b2cbd0
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093354 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55c126403bd0
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094501 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x5594d244fbd0
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094748 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55ad7a75bbd0
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094903 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x564b6bb73bd0
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094809 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55f3b7284e50
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093504 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x5649d1d95e50
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094572 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x56410b3d9e50
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093602 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x565176cf2e50
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093191 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55d6801e4e50
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.095429 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55660b20ae50
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094207 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55be322b1e50
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.098030 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x556eab48be50
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094944 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x560fce867790
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.097312 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55acb62df790
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094507 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55a779f61790
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093805 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55750f706790
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094945 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55991c23b790
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.102628 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x564f56291790
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.095004 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x561ca9301790
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.101727 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x560bfc42b790
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.098242 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x563496e62580
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.099306 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55a74831e580
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.097989 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55e0141bb580
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.099101 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55bbad314580
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.099549 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x5574baafc580
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.099112 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55724ff59580
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.100119 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x559214ab7580
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.100201 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55fd74ce7580
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.098176 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x56026d628790
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.099680 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55dba6a33790
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.098469 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x561e8e1ac790
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.099442 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x563ec8793790
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.100094 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x5582ee543790
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.098741 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x56207f9f7790
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.098672 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55a86d5ac790
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.099118 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55e533172300
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.100415 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x55d183537300
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.103502 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x5608e536b300
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.100528 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x560185a43300
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.100146 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x5576245fc300
+sudo perf stat --repeat 100 \
+	-e cache-misses,cache-references,instructions,cycles \
+	./test_common --bloom REF ""
+REF mechanism
+ternary_tree, loaded 206849 words in 0.100479 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f0bad6b1161
+REF mechanism
+ternary_tree, loaded 206849 words in 0.100381 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f23f73e4161
+REF mechanism
+ternary_tree, loaded 206849 words in 0.099801 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f3a83e8a86a
+REF mechanism
+ternary_tree, loaded 206849 words in 0.098156 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f81981c186a
+REF mechanism
+ternary_tree, loaded 206849 words in 0.098234 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f5114add86a
+REF mechanism
+ternary_tree, loaded 206849 words in 0.096430 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7fa39600f86a
+REF mechanism
+ternary_tree, loaded 206849 words in 0.095119 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7fc8c325f86a
+REF mechanism
+ternary_tree, loaded 206849 words in 0.096792 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f33057b086a
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093040 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7fbb3123e86a
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093217 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f164531b86a
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093325 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f1d79643d73
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094680 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f313cce0d73
+REF mechanism
+ternary_tree, loaded 206849 words in 0.096204 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f6ba75f0d73
+REF mechanism
+ternary_tree, loaded 206849 words in 0.096148 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7fe8a42e7d73
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094765 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f3b812b3d73
+REF mechanism
+ternary_tree, loaded 206849 words in 0.096309 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f7c79405d73
+REF mechanism
+ternary_tree, loaded 206849 words in 0.096542 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7fdd24767d73
+REF mechanism
+ternary_tree, loaded 206849 words in 0.099243 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f9423a08d73
+REF mechanism
+ternary_tree, loaded 206849 words in 0.096996 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7fdc68c137c6
+REF mechanism
+ternary_tree, loaded 206849 words in 0.095901 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f47c05277c6
+REF mechanism
+ternary_tree, loaded 206849 words in 0.095278 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f2718ea97c6
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094709 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f564a3657c6
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093664 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7fdcc20b57c6
+REF mechanism
+ternary_tree, loaded 206849 words in 0.095854 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f188cbcd7c6
+REF mechanism
+ternary_tree, loaded 206849 words in 0.095150 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7fda049c97c6
+REF mechanism
+ternary_tree, loaded 206849 words in 0.095443 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f5fe8dd37c6
+REF mechanism
+ternary_tree, loaded 206849 words in 0.095363 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7ff2cadfc8ca
+REF mechanism
+ternary_tree, loaded 206849 words in 0.092996 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f4d8ee6e8ca
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093412 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f83065598ca
+REF mechanism
+ternary_tree, loaded 206849 words in 0.096499 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f9faddaa8ca
+REF mechanism
+ternary_tree, loaded 206849 words in 0.095474 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7fbc757188ca
+REF mechanism
+ternary_tree, loaded 206849 words in 0.095733 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f7893d978ca
+REF mechanism
+ternary_tree, loaded 206849 words in 0.099815 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f5fc89c48ca
+REF mechanism
+ternary_tree, loaded 206849 words in 0.097091 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7fdca03318ca
+REF mechanism
+ternary_tree, loaded 206849 words in 0.096695 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f62fe092576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.105820 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f448c692576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.096796 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f9a60936576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.097934 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f60b2b3e576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.096226 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7fdcb4d04576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.098619 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7fb7867a3576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.095100 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7fb943f10576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094427 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f9192135b9c
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094769 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f0c5cc65b9c
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094441 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f589a736b9c
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094042 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f5b04b3eb9c
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093437 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7fec5f6e3b9c
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093352 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7fc108f38b9c
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093290 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f88fe64bb9c
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094787 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7fb37dc8bb9c
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094111 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f04f54b8576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093513 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f9826d82576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093678 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f1728301576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094537 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f9f11420576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.092223 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7fc9e2c79576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093784 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f40f3314576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.099752 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7ff06a2d8576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094269 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f453b18f576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.092647 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f487c788576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.092289 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7fdc91287576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.097903 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f1a7dac2576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094497 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f1523621576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.092330 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7fe06a3e6576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094286 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7fac6a98c576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.097805 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7fbd89fdc576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093347 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f7a48dbe576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.092237 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7ff23fdaf576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.098751 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f7596932576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.096012 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f726f19c576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.091997 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7fa2babd0576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094996 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7fade1973576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.092143 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f8c22ec0576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093052 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f86502a3576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093584 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7fa4e1648576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.092057 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f3b94bf6576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.092404 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f0dda2d7576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.092588 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f6fb6bc8576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.096598 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f3cc7e7e576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094478 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f2f63912576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094841 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7fa4e656f576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094432 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f929e145576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.095076 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7fdf9471b576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.096040 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f114a55ab70
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093818 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7fb3e6c12b70
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094873 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f182d87cb70
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094381 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7ffb4eac0b70
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093326 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7fb4abc97b70
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093086 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f36d58edb70
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094961 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f781b1a6b70
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093040 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7fd0d9677b70
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094550 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f8b42931576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.101388 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f53b99bc576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.100440 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f6487bcf576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.095296 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f16b45eb576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093040 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f50da3bb576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.092963 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f77c5c1e576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.092817 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f5985a7b576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.095894 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f684a363576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094208 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f3c4b161576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.095305 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f315711e576
+REF mechanism
+ternary_tree, loaded 206849 words in 0.092532 sec
+case 1 error 0
+case 2 error 0
+case 3 error 0
+case 4 error 0
+0x7f8206e94576
+sudo perf stat --repeat 100 \
+                -e cache-misses,cache-references,instructions,cycles \
+                ./test_common --bloom-wo CPY ""
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.095626 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.095143 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094964 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.096962 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094980 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094947 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093516 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.096427 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.097683 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.095536 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094972 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.097573 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.097184 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.095529 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094836 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094309 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094307 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093902 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094165 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094777 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094952 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.098621 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.099898 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.098900 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.096555 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094122 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.096504 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.096325 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094364 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.095674 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093598 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.095040 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.096749 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.099586 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.097936 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.096172 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.097071 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.095561 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.097746 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.106872 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.096918 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.099323 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.096662 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.099529 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.097508 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.095905 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.095063 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.097273 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.117072 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.109453 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.103071 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.098593 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.096593 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.097183 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094097 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094534 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094095 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.096770 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.098622 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.097912 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.098157 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094157 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.095687 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.098086 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.099637 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.099101 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094763 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.095625 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.100123 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.096423 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094022 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093913 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.095316 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093956 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.093694 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094108 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.092988 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.099421 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.098081 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.098686 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.100823 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.098060 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.095843 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.095463 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094433 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.095828 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094527 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.095354 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094154 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.097526 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.097116 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.098231 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.095770 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.097265 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.098053 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094763 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.096527 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094800 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.096234 sec
+CPY mechanism
+ternary_tree, loaded 206849 words in 0.094604 sec
+sudo perf stat --repeat 100 \
+                -e cache-misses,cache-references,instructions,cycles \
+                ./test_common --bloom-wo REF ""
+REF mechanism
+ternary_tree, loaded 206849 words in 0.097482 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.100065 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.096393 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.095619 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093945 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093362 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093706 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093427 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094992 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.092137 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094756 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094547 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.095313 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093406 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.096612 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094086 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.095928 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.096015 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094779 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.095020 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093228 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094454 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093858 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.095613 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.097159 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.095338 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.099650 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.092309 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.092271 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.092762 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.092597 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.091084 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.091440 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.092811 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.092631 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.091884 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.091728 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.092021 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.095860 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.099955 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.095784 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.104807 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.100482 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.091889 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094142 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093772 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093879 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094669 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093817 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093404 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094314 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093544 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094134 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.092463 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.101428 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.097538 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093744 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.092727 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.090352 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093768 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.090591 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.092412 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.091555 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093232 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.090697 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.090517 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.091542 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.089951 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.100147 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.096210 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.091013 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.092197 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093142 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.096630 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094018 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.098608 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.092517 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.092498 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094831 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.097830 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.089977 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093172 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.097353 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.095114 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.097208 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.095030 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094818 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093106 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.092665 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.095211 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.095049 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.095764 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.092185 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094432 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.092978 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.095108 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.094331 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.095033 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.093440 sec
+REF mechanism
+ternary_tree, loaded 206849 words in 0.096120 sec

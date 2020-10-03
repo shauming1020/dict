@@ -152,39 +152,38 @@ int check_file_exists(FILE *fp, FILE *dict, const char *output_file)
     return 0;
 }
 
-int prefix_search_bloom(const tst_node *root,
-                        bloom_t bloom,
-                        const char *tmp,
-                        const char *mode)
+/* Experiment */
+int search_bloom(const tst_node *root,
+                 bloom_t bloom,
+                 const char *tmp,
+                 const char *mode)
 {
     char word[WORDMAX] = "";
     char output_file[WORDMAX] = "";
     FILE *fp;
     FILE *dict = fopen(DICT_FILE, "r");
-    int idx = 0, sidx = 0;
+    int idx = 0, error = 0;
     double t1, t2;
-    char *sgl[1024] = {NULL};  // LMAX = 1024
-    tst_node *res = NULL;
+    tst_node *res;
 
     if (strlen(tmp) > 0) {
         /* Search one word by TEST_LEN times*/
+        res = NULL;
         strcpy(word, tmp);
         get_outfile_name(output_file, 0, mode, "w");
         fp = fopen(output_file, "w");
         if (check_file_exists(fp, dict, output_file))
             return 1;
-        while (idx < TEST_LEN) {
-            t1 = tvgetf();
-            if (bloom_test(bloom, word)) {
-                res = tst_search_prefix(root, word, sgl, &sidx, 1024);
-                t2 = tvgetf();
-                fprintf(fp, "%d %f msec\n", idx, (t2 - t1) * 1000);
-            } else {
-                t2 = tvgetf();
-                fprintf(fp, "%d %f msec\n", idx, (t2 - t1) * 1000);
-                printf("  %s not found by bloom filter.\n", word);
-            }
-            idx++;
+
+        t1 = tvgetf();
+        if (bloom_test(bloom, word)) {
+            res = tst_search(root, word);
+            t2 = tvgetf();
+            fprintf(fp, "%d %f msec\n", idx, (t2 - t1) * 1000);
+        } else {
+            t2 = tvgetf();
+            fprintf(fp, "%d %f msec\n", idx, (t2 - t1) * 1000);
+            printf("  %s not found by bloom filter.\n", word);
         }
 
     } else {
@@ -202,74 +201,25 @@ int prefix_search_bloom(const tst_node *root,
 
             t1 = tvgetf();
             if (bloom_test(bloom, word)) {
-                res = tst_search_prefix(root, word, sgl, &sidx, 1024);
+                res = tst_search(root, word);
                 t2 = tvgetf();
-                fprintf(fp, "%d %f msec\n", idx, (t2 - t1) * 1000);
+                fprintf(fp, "%d %.10f msec\n", idx, (t2 - t1) * 1000);
             } else {
                 t2 = tvgetf();
-                fprintf(fp, "%d %f msec\n", idx, (t2 - t1) * 1000);
-                printf("  %s not found by bloom filter.\n", word);
+                fprintf(fp, "%d %.10f msec\n", idx, (t2 - t1) * 1000);
+                if (tst_search(root, word))
+                    error++;
             }
             idx++;
         }
+        printf("case 1 error %d\n", error);
 
-        /* Case 2: random string */
-        output_file[0] = '\0';
-        get_outfile_name(output_file, 2, mode, "w");
-        fp = fopen(output_file, "w");
-        idx = 0;
-        sidx = 0;
-        sgl[0] = NULL;
-        while (idx < TEST_LEN) {
-            gen_random(word, rand() % WORDMAX);
-
-            t1 = tvgetf();
-            if (bloom_test(bloom, word)) {
-                res = tst_search_prefix(root, word, sgl, &sidx, 1024);
-                t2 = tvgetf();
-                fprintf(fp, "%d %f msec\n", idx, (t2 - t1) * 1000);
-            } else {
-                t2 = tvgetf();
-                fprintf(fp, "%d %f msec\n", idx, (t2 - t1) * 1000);
-                printf("  %s not found by bloom filter.\n", word);
-            }
-            idx++;
-        }
-
-        /* Case 3: string with the same prefix */
-        output_file[0] = '\0';
-        get_outfile_name(output_file, 3, mode, "w");
-        fp = fopen(output_file, "w");
-        idx = 0;
-        sidx = 0;
-        sgl[0] = NULL;
-        while (fscanf(dict, "%s", word) != EOF && (idx < TEST_LEN)) {
-            x = (double) rand() / (RAND_MAX + 1.0);
-            if (x < 0.5)
-                continue;
-
-            word[strlen(word) - 1] = '\0';
-
-            t1 = tvgetf();
-            if (bloom_test(bloom, word)) {
-                res = tst_search_prefix(root, word, sgl, &sidx, 1024);
-                t2 = tvgetf();
-                fprintf(fp, "%d %f msec\n", idx, (t2 - t1) * 1000);
-            } else {
-                t2 = tvgetf();
-                fprintf(fp, "%d %f msec\n", idx, (t2 - t1) * 1000);
-                printf("  %s not found by bloom filter.\n", word);
-            }
-            idx++;
-        }
-
-        /* Case 4: string with the different with first char*/
+        /* Case 2: string with the different with first char*/
         output_file[0] = '\0';
         get_outfile_name(output_file, 4, mode, "w");
         fp = fopen(output_file, "w");
         idx = 0;
-        sidx = 0;
-        sgl[0] = NULL;
+        error = 0;
         while (fscanf(dict, "%s", word) != EOF && (idx < TEST_LEN)) {
             x = (double) rand() / (RAND_MAX + 1.0);
             if (x < 0.5)
@@ -279,36 +229,88 @@ int prefix_search_bloom(const tst_node *root,
 
             t1 = tvgetf();
             if (bloom_test(bloom, word)) {
-                res = tst_search_prefix(root, word, sgl, &sidx, 1024);
+                res = tst_search(root, word);
                 t2 = tvgetf();
-                fprintf(fp, "%d %f msec\n", idx, (t2 - t1) * 1000);
+                fprintf(fp, "%d %.10f msec\n", idx, (t2 - t1) * 1000);
             } else {
                 t2 = tvgetf();
-                fprintf(fp, "%d %f msec\n", idx, (t2 - t1) * 1000);
-                printf("  %s not found by bloom filter.\n", word);
+                fprintf(fp, "%d %.10f msec\n", idx, (t2 - t1) * 1000);
+                if (tst_search(root, word))
+                    error++;
             }
             idx++;
         }
-    }
+        printf("case 2 error %d\n", error);
 
+        /* Case 3: string with the same prefix */
+        output_file[0] = '\0';
+        get_outfile_name(output_file, 3, mode, "w");
+        fp = fopen(output_file, "w");
+        idx = 0;
+        error = 0;
+        while (fscanf(dict, "%s", word) != EOF && (idx < TEST_LEN)) {
+            x = (double) rand() / (RAND_MAX + 1.0);
+            if (x < 0.5)
+                continue;
+
+            word[strlen(word) - 1] = '\0';
+
+            t1 = tvgetf();
+            if (bloom_test(bloom, word)) {
+                res = tst_search(root, word);
+                t2 = tvgetf();
+                fprintf(fp, "%d %.10f msec\n", idx, (t2 - t1) * 1000);
+            } else {
+                t2 = tvgetf();
+                fprintf(fp, "%d %.10f msec\n", idx, (t2 - t1) * 1000);
+                if (tst_search(root, word))
+                    error++;
+            }
+            idx++;
+        }
+        printf("case 3 error %d\n", error);
+
+        /* Case 4: random string */
+        output_file[0] = '\0';
+        get_outfile_name(output_file, 2, mode, "w");
+        fp = fopen(output_file, "w");
+        idx = 0;
+        error = 0;
+        while (idx < TEST_LEN) {
+            gen_random(word, rand() % WORDMAX);
+
+            t1 = tvgetf();
+            if (bloom_test(bloom, word)) {
+                res = tst_search(root, word);
+                t2 = tvgetf();
+                fprintf(fp, "%d %.10f msec\n", idx, (t2 - t1) * 1000);
+            } else {
+                t2 = tvgetf();
+                fprintf(fp, "%d %.10f msec\n", idx, (t2 - t1) * 1000);
+                if (tst_search(root, word))
+                    error++;
+            }
+            idx++;
+        }
+        printf("case 4 error %d\n", error);
+    }
+    printf("%p\n", res);
     fclose(fp);
     fclose(dict);
-    free(res);
     return 0;
 }
 
-int prefix_search_wo_bloom(const tst_node *root,
-                           bloom_t bloom,
-                           const char *tmp,
-                           const char *mode)
+int search_wo_bloom(const tst_node *root,
+                    bloom_t bloom,
+                    const char *tmp,
+                    const char *mode)
 {
     char word[WORDMAX] = "";
     char output_file[WORDMAX] = "";
     FILE *fp;
     FILE *dict = fopen(DICT_FILE, "r");
-    int idx = 0, sidx = 0;
+    int idx = 0;
     double t1, t2;
-    char *sgl[1024] = {NULL};  // LMAX = 1024
     tst_node *res = NULL;
 
     if (strlen(tmp) > 0) {
@@ -319,16 +321,15 @@ int prefix_search_wo_bloom(const tst_node *root,
         fp = fopen(output_file, "w");
         if (check_file_exists(fp, dict, output_file))
             return 1;
-        while (idx < TEST_LEN) {
-            t1 = tvgetf();
-            res = tst_search_prefix(root, word, sgl, &sidx, 1024);
-            t2 = tvgetf();
 
-            if (!res)
-                printf("  %s not found by tree.\n", word);
-            fprintf(fp, "%d %f msec\n", idx, (t2 - t1) * 1000);
-            printf("find %s cost %f msec.\n", word, (t2 - t1) * 1000);
-        }
+        t1 = tvgetf();
+        res = tst_search(root, word);
+        t2 = tvgetf();
+
+        if (!res)
+            printf("  %s not found by tree.\n", word);
+        fprintf(fp, "%d %.6f msec\n", idx, (t2 - t1) * 1000);
+        printf("find %s cost %f msec.\n", word, (t2 - t1) * 1000);
 
     } else {
         /* Case 1 : */
@@ -342,68 +343,18 @@ int prefix_search_wo_bloom(const tst_node *root,
                 continue;
 
             t1 = tvgetf();
-            res = tst_search_prefix(root, word, sgl, &sidx, 1024);
+            res = tst_search(root, word);
             t2 = tvgetf();
 
-            if (!res)
-                printf("  %s not found by tree.\n", word);
-            fprintf(fp, "%d %f msec\n", idx, (t2 - t1) * 1000);
-            printf("find %s cost %f msec.\n", word, (t2 - t1) * 1000);
-            idx++;
-        }
-        /* Case 2 */
-        output_file[0] = '\0';
-        get_outfile_name(output_file, 2, mode, "wo");
-        fp = fopen(output_file, "w");
-        idx = 0;
-        sidx = 0;
-        sgl[0] = NULL;
-        while (idx < TEST_LEN) {
-            gen_random(word, rand() % WORDMAX);
-
-            t1 = tvgetf();
-            res = tst_search_prefix(root, word, sgl, &sidx, 1024);
-            t2 = tvgetf();
-
-            if (!res)
-                printf("  %s not found by bloom filter.\n", word);
-            fprintf(fp, "%d %f msec\n", idx, (t2 - t1) * 1000);
-            printf("find %s cost %f msec.\n", word, (t2 - t1) * 1000);
+            fprintf(fp, "%d %.10f msec\n", idx, (t2 - t1) * 1000);
             idx++;
         }
 
-        /* Case 3 : */
-        output_file[0] = '\0';
-        get_outfile_name(output_file, 3, mode, "wo");
-        fp = fopen(output_file, "w");
-        idx = 0;
-        sidx = 0;
-        sgl[0] = NULL;
-        while (fscanf(dict, "%s", word) != EOF && (idx < TEST_LEN)) {
-            x = (double) rand() / (RAND_MAX + 1.0);
-            if (x < 0.5)
-                continue;
-
-            word[strlen(word) - 1] = '\0';
-
-            t1 = tvgetf();
-            res = tst_search_prefix(root, word, sgl, &sidx, 1024);
-            t2 = tvgetf();
-
-            if (!res)
-                printf("  %s not found by bloom filter.\n", word);
-            fprintf(fp, "%d %f msec\n", idx, (t2 - t1) * 1000);
-            printf("find %s cost %f msec.\n", word, (t2 - t1) * 1000);
-            idx++;
-        }
-
-        /* Case 4 : */
+        /* Case 2 : */
         output_file[0] = '\0';
         get_outfile_name(output_file, 4, mode, "wo");
         fp = fopen(output_file, "w");
         idx = 0;
-        sidx = 0;
-        sgl[0] = NULL;
         while (fscanf(dict, "%s", word) != EOF && (idx < TEST_LEN)) {
             x = (double) rand() / (RAND_MAX + 1.0);
             if (x < 0.5)
@@ -412,19 +363,51 @@ int prefix_search_wo_bloom(const tst_node *root,
             word[0] = '$';
 
             t1 = tvgetf();
-            res = tst_search_prefix(root, word, sgl, &sidx, 1024);
+            res = tst_search(root, word);
             t2 = tvgetf();
 
-            if (!res)
-                printf("  %s not found by bloom filter.\n", word);
-            fprintf(fp, "%d %f msec\n", idx, (t2 - t1) * 1000);
-            printf("find %s cost %f msec.\n", word, (t2 - t1) * 1000);
+            fprintf(fp, "%d %.10f msec\n", idx, (t2 - t1) * 1000);
+            idx++;
+        }
+
+        /* Case 3 : */
+        output_file[0] = '\0';
+        get_outfile_name(output_file, 3, mode, "wo");
+        fp = fopen(output_file, "w");
+        idx = 0;
+        while (fscanf(dict, "%s", word) != EOF && (idx < TEST_LEN)) {
+            x = (double) rand() / (RAND_MAX + 1.0);
+            if (x < 0.5)
+                continue;
+
+            word[strlen(word) - 1] = '\0';
+
+            t1 = tvgetf();
+            res = tst_search(root, word);
+            t2 = tvgetf();
+
+            fprintf(fp, "%d %.10f msec\n", idx, (t2 - t1) * 1000);
+            idx++;
+        }
+
+        /* Case 4 */
+        output_file[0] = '\0';
+        get_outfile_name(output_file, 2, mode, "wo");
+        fp = fopen(output_file, "w");
+        idx = 0;
+        while (idx < TEST_LEN) {
+            gen_random(word, rand() % WORDMAX);
+
+            t1 = tvgetf();
+            res = tst_search(root, word);
+            t2 = tvgetf();
+
+            fprintf(fp, "%d %.10f msec\n", idx, (t2 - t1) * 1000);
             idx++;
         }
     }
 
     fclose(fp);
     fclose(dict);
-    free(res);
     return 0;
 }
