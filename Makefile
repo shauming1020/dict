@@ -43,10 +43,10 @@ test_%: test_%.o $(OBJS_LIB)
 
 test:  $(TESTS)
 	echo 3 | sudo tee /proc/sys/vm/drop_caches;
-	sudo perf stat --repeat 100 \
+	sudo perf stat --repeat 1000 \
                 -e cache-misses,cache-references,instructions,cycles \
                 ./test_common --bench CPY $(TEST_DATA)
-	sudo perf stat --repeat 100 \
+	sudo perf stat --repeat 1000 \
                 -e cache-misses,cache-references,instructions,cycles \
 	        ./test_common --bench REF $(TEST_DATA)
 
@@ -75,6 +75,39 @@ plot: $(TESTS)
 		| grep 'ternary_tree, loaded 206849 words'\
 		| grep -Eo '[0-9]+\.[0-9]+' > ref_data.csv
 
+experiment: $(TESTS)
+	mkdir -p experiment;
+	@echo "COPY mechanism"
+	./$(TESTS) --bloom CPY "";		
+	./$(TESTS) --bloom-wo CPY "";
+	@echo "REFERENCE mechanism"
+	./$(TESTS) --bloom REF "";
+	./$(TESTS) --bloom-wo REF "";
+	echo 3 | sudo tee /proc/sys/vm/drop_caches;
+	sudo perf stat --repeat 500 \
+		-e cache-misses,cache-references,instructions,cycles \
+		./$(TESTS) --bloom CPY ""
+	sudo perf stat --repeat 500 \
+		-e cache-misses,cache-references,instructions,cycles \
+		./$(TESTS) --bloom REF ""
+#	sudo perf stat --repeat 500 \
+                -e cache-misses,cache-references,instructions,cycles \
+                ./$(TESTS) --bloom-wo CPY ""
+#	sudo perf stat --repeat 500 \
+                -e cache-misses,cache-references,instructions,cycles \
+                ./$(TESTS) --bloom-wo REF ""
+
+
+perf-search: $(TESTS)
+	@for test in $(TESTS); do \
+	echo 3 | sudo tee /proc/sys/vm/drop_caches; \
+	sudo perf record \
+	-e cache-misses \
+	./$$test --bench REF $(TEST_DATA) perf report;
+	sudo perf stat \
+	-e cache-misses,cache-references,instructions,cycles \
+	./$$test --bench REF $(TEST_DATA);
+	
 clean:
 	$(RM) $(TESTS) $(OBJS)
 	$(RM) $(deps)

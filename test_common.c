@@ -7,9 +7,10 @@
 #include "bench.c"
 #include "bloom.h"
 #include "tst.h"
+#include "xorfilter.h"
 
-#define TableSize 50000000 /* size of bloom filter */
-#define HashNumber 5000000 /* number of hash functions */
+#define TableSize 5000000 /* size of bloom filter */
+#define HashNumber 2      /* number of hash functions */
 
 /** constants insert, delete, max word(s) & stack nodes */
 enum { INS, DEL, WRDMAX = 256, STKMAX = 512, LMAX = 1024 };
@@ -50,7 +51,6 @@ int main(int argc, char **argv)
         printf("CPY mechanism\n");
     } else
         printf("REF mechanism\n");
-
 
     FILE *fp = fopen(IN_FILE, "r");
 
@@ -99,7 +99,10 @@ int main(int argc, char **argv)
 
     if (argc == 3 && strcmp(argv[1], "--bench") == 0) {
         int stat = bench_test(root, BENCH_TEST_FILE, LMAX);
-        tst_free(root);
+        if (CPYmask)
+            tst_free(root);
+        else
+            tst_free_all(root);
         free(pool);
         return stat;
     }
@@ -109,15 +112,22 @@ int main(int argc, char **argv)
         rmcrlf(word);
 
         int stat = search_bloom(root, bloom, word, argv[2]);
-        tst_free(root);
+        if (CPYmask)
+            tst_free(root);
+        else
+            tst_free_all(root);
         free(pool);
+        bloom_free(bloom);
         return stat;
     } else if (argc == 4 && strcmp(argv[1], "--bloom-wo") == 0) {
         strcpy(word, argv[3]);
         rmcrlf(word);
 
         int stat = search_wo_bloom(root, bloom, word, argv[2]);
-        tst_free(root);
+        if (CPYmask)
+            tst_free(root);
+        else
+            tst_free_all(root);
         free(pool);
         return stat;
     }

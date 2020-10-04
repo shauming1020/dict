@@ -17,7 +17,7 @@
 #define OUT_WO_FILE_3 "experiment/output_wo_bloom_first"
 #define OUT_WO_FILE_ONE "experiment/output_wo_bloom_oneword"
 
-#define TEST_LEN 5000
+#define TEST_LEN 100000
 #define WORDMAX 256
 #define PREFIX_LEN 3
 
@@ -214,7 +214,7 @@ int search_bloom(const tst_node *root,
         }
         printf("case 1 error %d\n", error);
 
-        /* Case 2: string with the different with first char*/
+        /* Case 2: string with the different first char*/
         output_file[0] = '\0';
         get_outfile_name(output_file, 4, mode, "w");
         fp = fopen(output_file, "w");
