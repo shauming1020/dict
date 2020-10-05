@@ -17,9 +17,10 @@
 #define OUT_WO_FILE_3 "experiment/output_wo_bloom_first"
 #define OUT_WO_FILE_ONE "experiment/output_wo_bloom_oneword"
 
-#define TEST_LEN 100000
+#define TEST_LEN 200000
 #define WORDMAX 256
 #define PREFIX_LEN 3
+#define DICE 0
 
 double tvgetf()
 {
@@ -140,11 +141,11 @@ int check_file_exists(FILE *fp, FILE *dict, const char *output_file)
 {
     if (!fp || !dict) {
         if (fp) {
-            fprintf(stderr, "error: file open failed in '%s'.\n", output_file);
+            fprintf(stderr, "error: file open failed in '%s'.\n", DICT_FILE);
             fclose(fp);
         }
         if (dict) {
-            fprintf(stderr, "error: file open failed in '%s'.\n", DICT_FILE);
+            fprintf(stderr, "error: file open failed in '%s'.\n", output_file);
             fclose(dict);
         }
         return 1;
@@ -158,6 +159,7 @@ int search_bloom(const tst_node *root,
                  const char *tmp,
                  const char *mode)
 {
+    char buf[WORDMAX] = "";
     char word[WORDMAX] = "";
     char output_file[WORDMAX] = "";
     FILE *fp;
@@ -169,7 +171,11 @@ int search_bloom(const tst_node *root,
     if (strlen(tmp) > 0) {
         /* Search one word by TEST_LEN times*/
         res = NULL;
-        strcpy(word, tmp);
+
+        for (int i = 0; i < strlen(tmp) && tmp[i] != '\0'; i++) {
+            word[i] = (tmp[i] == ',' || tmp[i] == '\n') ? '\0' : tmp[i];
+        }
+
         get_outfile_name(output_file, 0, mode, "w");
         fp = fopen(output_file, "w");
         if (check_file_exists(fp, dict, output_file))
@@ -194,10 +200,14 @@ int search_bloom(const tst_node *root,
         fp = fopen(output_file, "w");
         if (check_file_exists(fp, dict, output_file))
             return 1;
-        while (fscanf(dict, "%s", word) != EOF && (idx < TEST_LEN)) {
+        while (fscanf(dict, "%s", buf) != EOF && (idx < TEST_LEN)) {
             x = (double) rand() / (RAND_MAX + 1.0);
-            if (x < 0.5)
+            if (x < DICE)
                 continue;
+
+            for (int i = 0; i < strlen(buf) && buf[i] != '\0'; i++) {
+                word[i] = (buf[i] == ',' || buf[i] == '\n') ? '\0' : buf[i];
+            }
 
             t1 = tvgetf();
             if (bloom_test(bloom, word)) {
@@ -218,12 +228,17 @@ int search_bloom(const tst_node *root,
         output_file[0] = '\0';
         get_outfile_name(output_file, 4, mode, "w");
         fp = fopen(output_file, "w");
+        dict = fopen(DICT_FILE, "r");
         idx = 0;
         error = 0;
-        while (fscanf(dict, "%s", word) != EOF && (idx < TEST_LEN)) {
+        while (fscanf(dict, "%s", buf) != EOF && (idx < TEST_LEN)) {
             x = (double) rand() / (RAND_MAX + 1.0);
-            if (x < 0.5)
+            if (x < DICE)
                 continue;
+
+            for (int i = 0; i < strlen(buf) && buf[i] != '\0'; i++) {
+                word[i] = (buf[i] == ',' || buf[i] == '\n') ? '\0' : buf[i];
+            }
 
             word[0] = '$';
 
@@ -246,12 +261,17 @@ int search_bloom(const tst_node *root,
         output_file[0] = '\0';
         get_outfile_name(output_file, 3, mode, "w");
         fp = fopen(output_file, "w");
+        dict = fopen(DICT_FILE, "r");
         idx = 0;
         error = 0;
-        while (fscanf(dict, "%s", word) != EOF && (idx < TEST_LEN)) {
+        while (fscanf(dict, "%s", buf) != EOF && (idx < TEST_LEN)) {
             x = (double) rand() / (RAND_MAX + 1.0);
-            if (x < 0.5)
+            if (x < DICE)
                 continue;
+
+            for (int i = 0; i < strlen(buf) && buf[i] != '\0'; i++) {
+                word[i] = (buf[i] == ',' || buf[i] == '\n') ? '\0' : buf[i];
+            }
 
             word[strlen(word) - 1] = '\0';
 
@@ -274,6 +294,7 @@ int search_bloom(const tst_node *root,
         output_file[0] = '\0';
         get_outfile_name(output_file, 2, mode, "w");
         fp = fopen(output_file, "w");
+        dict = fopen(DICT_FILE, "r");
         idx = 0;
         error = 0;
         while (idx < TEST_LEN) {
@@ -305,6 +326,7 @@ int search_wo_bloom(const tst_node *root,
                     const char *tmp,
                     const char *mode)
 {
+    char buf[WORDMAX] = "";
     char word[WORDMAX] = "";
     char output_file[WORDMAX] = "";
     FILE *fp;
@@ -315,7 +337,11 @@ int search_wo_bloom(const tst_node *root,
 
     if (strlen(tmp) > 0) {
         /* Search one word by TEST_LEN times*/
-        strcpy(word, tmp);
+
+        for (int i = 0; i < strlen(tmp) && tmp[i] != '\0'; i++) {
+            word[i] = (tmp[i] == ',' || tmp[i] == '\n') ? '\0' : tmp[i];
+        }
+
         output_file[0] = '\0';
         get_outfile_name(output_file, 0, mode, "wo");
         fp = fopen(output_file, "w");
@@ -337,10 +363,17 @@ int search_wo_bloom(const tst_node *root,
         srand(time(NULL));
         get_outfile_name(output_file, 1, mode, "wo");
         fp = fopen(output_file, "w");
-        while (fscanf(dict, "%s", word) != EOF && (idx < TEST_LEN)) {
+        if (check_file_exists(fp, dict, output_file))
+            return 1;
+
+        while (fscanf(dict, "%s", buf) != EOF && (idx < TEST_LEN)) {
             x = (double) rand() / (RAND_MAX + 1.0);
-            if (x < 0.5)
+            if (x < DICE)
                 continue;
+
+            for (int i = 0; i < strlen(buf) && buf[i] != '\0'; i++) {
+                word[i] = (buf[i] == ',' || buf[i] == '\n') ? '\0' : buf[i];
+            }
 
             t1 = tvgetf();
             res = tst_search(root, word);
@@ -354,11 +387,16 @@ int search_wo_bloom(const tst_node *root,
         output_file[0] = '\0';
         get_outfile_name(output_file, 4, mode, "wo");
         fp = fopen(output_file, "w");
+        dict = fopen(DICT_FILE, "r");
         idx = 0;
-        while (fscanf(dict, "%s", word) != EOF && (idx < TEST_LEN)) {
+        while (fscanf(dict, "%s", buf) != EOF && (idx < TEST_LEN)) {
             x = (double) rand() / (RAND_MAX + 1.0);
-            if (x < 0.5)
+            if (x < DICE)
                 continue;
+
+            for (int i = 0; i < strlen(buf) && buf[i] != '\0'; i++) {
+                word[i] = (buf[i] == ',' || buf[i] == '\n') ? '\0' : buf[i];
+            }
 
             word[0] = '$';
 
@@ -374,11 +412,16 @@ int search_wo_bloom(const tst_node *root,
         output_file[0] = '\0';
         get_outfile_name(output_file, 3, mode, "wo");
         fp = fopen(output_file, "w");
+        dict = fopen(DICT_FILE, "r");
         idx = 0;
-        while (fscanf(dict, "%s", word) != EOF && (idx < TEST_LEN)) {
+        while (fscanf(dict, "%s", buf) != EOF && (idx < TEST_LEN)) {
             x = (double) rand() / (RAND_MAX + 1.0);
-            if (x < 0.5)
+            if (x < DICE)
                 continue;
+
+            for (int i = 0; i < strlen(buf) && buf[i] != '\0'; i++) {
+                word[i] = (buf[i] == ',' || buf[i] == '\n') ? '\0' : buf[i];
+            }
 
             word[strlen(word) - 1] = '\0';
 
